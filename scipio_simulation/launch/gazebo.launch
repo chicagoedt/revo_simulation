@@ -3,6 +3,9 @@
 
   <arg name="gui" default="true" />
   <arg name="headless" default="false" />
+  <arg name="rviz" default="false"/>
+
+  <env name="GAZEBO_MODEL_PATH" value="$(find gazebo_config)"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="use_sim_time" value="true"/>
@@ -23,7 +26,7 @@
   <include file="$(find scipio_2dnav)/camera_tf.launch"/>
   <include file="$(find scipio_2dnav)/move_base.launch"/>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scipio_2dnav)/navigation_setup.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scipio_2dnav)/navigation_setup.rviz" if="$(arg rviz)"/>
   <node name="voxel_grid_2_point_cloud" pkg="costmap_2d" type="costmap_2d_cloud">
     <remap from="voxel_grid" to="/move_base/local_costmap/obstacle_layer/voxel_grid"/>
     <remap from="voxel_marked_cloud" to="/move_base/local_costmap/obstacle_layer/marked_cloud"/>
@@ -45,6 +48,6 @@
   </node>
 
   <!-- New configuration which uses only imu and wheel odom, no gps until Tom fixes bug -->
-  <include file="$(find gazebo_config)/gazeboekf-new.launch"/>
+  <include file="$(find gazebo_config)/launch/gazeboekf-new.launch"/>
 </launch>
 
