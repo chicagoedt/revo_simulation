@@ -14,8 +14,8 @@
     <arg name="world_name" value="$(find scipio_simulation)/worlds/igvc_final.world"/>
   </include>
 
-  <include file="$(find scipio_2dnav)/static_transforms.launch"/>
-  <include file="$(find scipio_2dnav)/move_base.launch"/>
+  <include file="$(find scipio_2dnav)/launch/static_transforms.launch"/>
+  <include file="$(find scipio_2dnav)/launch/move_base.launch"/>
 
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
@@ -31,7 +31,9 @@
 
   <include file="$(find scipio_2dnav)/launch/localization/robot_localization.launch"/>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scipio_2dnav)/navigation_setup.rviz" if="$(arg rviz)"/>
+  <include file="$(find line_detection)/launch/igvc_linedetection_gazebo.launch"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scipio_2dnav)/rviz/navigation_setup.rviz" if="$(arg rviz)"/>
   <node name="voxel_grid_2_point_cloud" pkg="costmap_2d" type="costmap_2d_cloud">
     <remap from="voxel_grid" to="/move_base/local_costmap/obstacle_layer/voxel_grid"/>
     <remap from="voxel_marked_cloud" to="/move_base/local_costmap/obstacle_layer/marked_cloud"/>
