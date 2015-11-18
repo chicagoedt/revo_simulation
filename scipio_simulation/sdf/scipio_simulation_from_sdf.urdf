@@ -118,7 +118,7 @@
       </geometry>
     </visual>
   </link>
-  <link name='imu_link'>
+  <link name='imu'>
     <inertial>
       <origin xyz='0 0 0' rpy='0 -0 0'/>
       <mass value='0.001'/>
@@ -180,9 +180,9 @@
   </joint>
 
   <joint name='imu_joint' type='revolute'>
-    <origin xyz='0 0 0' rpy='0 -0 0'/>
+    <origin xyz='0 0 0' rpy='3.14159 0 0'/>
     <parent link='base_link'/>
-    <child link='imu_link'/>
+    <child link='imu'/>
     <axis xyz='0 0 1'/>
     <limit lower='0' upper='0' effort='-1' velocity='-1'/>
   </joint>
@@ -249,7 +249,7 @@
             <rightRearJoint>front_left_wheel_joint</rightRearJoint>
             <wheelSeparation>0.854431</wheelSeparation>
             <wheelDiameter>0.379476</wheelDiameter>
-            <robotBaseFrame>base_footprint</robotBaseFrame>
+            <robotBaseFrame>base_link</robotBaseFrame>
             <torque>40</torque>
             <commandTopic>cmd_vel</commandTopic>
             <odometryTopic>raw_odom</odometryTopic>
@@ -262,14 +262,14 @@
             <updateRate>40</updateRate>
             <robotNamespace>/</robotNamespace>
             <bodyName>gps_link</bodyName>
-            <frameId>base_footprint</frameId>
+            <frameId>base_link</frameId>
             <topicName>fix</topicName>
             <velocityTopicName>/navsat/vel</velocityTopicName>
             <referenceLatitude>49.9</referenceLatitude>
             <referenceLongitude>8.9</referenceLongitude>
             <referenceHeading>0</referenceHeading>
             <referenceAltitude>0</referenceAltitude>
-            <drift>0.0000 0.0000 0.0000</drift>
+            <drift>0.0005 0.0005 0.0005</drift>
         </plugin>
     </gazebo>
 
@@ -277,14 +277,14 @@
     <plugin name="imu_controller" filename="libhector_gazebo_ros_imu.so">
         <robotNamespace>/</robotNamespace>
         <updateRate>50.0</updateRate>
-        <bodyName>base_link</bodyName>
+        <bodyName>imu</bodyName>
         <topicName>imu/data</topicName>
-        <accelDrift>0.00 0.00 0.00</accelDrift>
-        <accelGaussianNoise>0.00 0.00 0.00</accelGaussianNoise>
-        <rateDrift>0.00 0.00 0.00</rateDrift>
-        <rateGaussianNoise>0.00 0.00 0.00 </rateGaussianNoise>
-        <headingDrift>0.00</headingDrift>
-        <headingGaussianNoise>0.00</headingGaussianNoise>
+        <accelDrift>0.000017 0.000017 0.000017</accelDrift>
+        <accelGaussianNoise>0.000017 0.000017 0.000017</accelGaussianNoise>
+        <rateDrift>0.000017 0.000017 0.000017</rateDrift>
+        <rateGaussianNoise>0.000017 0.000017 0.000017</rateGaussianNoise>
+        <headingDrift>0.000017</headingDrift>
+        <headingGaussianNoise>0.000017</headingGaussianNoise>
     </plugin>
     </gazebo>
 
