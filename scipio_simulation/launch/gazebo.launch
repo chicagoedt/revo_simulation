@@ -3,7 +3,7 @@
 
   <arg name="gui" default="true" />
   <arg name="headless" default="false" />
-  <arg name="rviz" default="false"/>
+  <arg name="rviz" default="true" />
 
   <env name="GAZEBO_MODEL_PATH" value="$(find gazebo_config)"/>
 
@@ -14,6 +14,14 @@
     <arg name="world_name" value="$(find scipio_simulation)/worlds/igvc_final.world"/>
   </include>
 
+  <!-- Run the stereo image proc -->
+<!--
+<group ns="stereo_camera">
+  <include file="$(find stereo_image_proc)/launch/stereo_image_proc.launch">
+    <arg name="manager" value="stereo_manager"/>
+  </include>
+</group>
+-->
   <include file="$(find scipio_2dnav)/launch/static_transforms.launch"/>
   <include file="$(find scipio_2dnav)/launch/move_base.launch"/>
 
@@ -39,6 +47,10 @@
     <remap from="voxel_marked_cloud" to="/move_base/local_costmap/obstacle_layer/marked_cloud"/>
     <remap from="voxel_unknown_cloud" to="/move_base/local_costmap/obstacle_layer/unknown_cloud"/>
   </node>
+
+
+    
+
 
 </launch>
 
