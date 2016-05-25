@@ -141,7 +141,7 @@
     </visual>
   </link>
 
-  <link name='blackfly_mount_link_left'>
+<!--  <link name='blackfly_mount_link_left'>
     <origin xyz='0.05 0.35 0.8' rpy='0 0.6108652382 0.78539816339'/>
     <inertial>
       <origin xyz='0 0 0' rpy='0 -0 0'/>
@@ -161,8 +161,8 @@
       </geometry>
     </visual>
   </link>
-
-  <link name='blackfly_mount_link_right'>
+-->
+<!--  <link name='blackfly_mount_link_right'>
     <origin xyz='0.05 -0.35 0.8' rpy='0 0.6108652382 -0.78539816339'/>
     <inertial>
       <origin xyz='0 0 0' rpy='0 -0 0'/>
@@ -182,7 +182,7 @@
       </geometry>
     </visual>
   </link>
-
+-->
 
   <link name='imu'>
     <inertial>
@@ -271,21 +271,21 @@
     <axis xyz='-1 0 0'/>
   </joint>
 
-  <joint name='blackfly_mount_joint_left' type='fixed'>
+<!--  <joint name='blackfly_mount_joint_left' type='fixed'>
     <origin xyz='0.05 0.35 0.8' rpy='0 0.6108652382 0.78539816339'/>
     <parent link='base_link'/>
     <child link='blackfly_mount_link_left'/>
-   <!-- <axis xyz='-0.500007 0 -0.866022'/> -->
     <axis xyz='-1 0 0'/>
   </joint>
+-->
 
-  <joint name='blackfly_mount_joint_right' type='fixed'>
+<!--  <joint name='blackfly_mount_joint_right' type='fixed'>
     <origin xyz='0.05 -0.35 0.8' rpy='0 0.6108652382 -0.78539816339'/>
     <parent link='base_link'/>
     <child link='blackfly_mount_link_right'/>
-   <!-- <axis xyz='-0.500007 0 -0.866022'/> -->
     <axis xyz='-1 0 0'/>
   </joint>
+-->
 
   <joint name='imu_joint' type='revolute'>
     <origin xyz='0 0 0' rpy='3.14159 0 0'/>
@@ -435,7 +435,7 @@
   </gazebo>
 
 
-  <gazebo reference="blackfly_mount_link_left">
+<!--  <gazebo reference="blackfly_mount_link_left">
     <sensor type="camera" name="blackfly_camera_left">
       <update_rate>20</update_rate>
       <camera name="head">
@@ -451,9 +451,6 @@
         </clip>
         <noise>
           <type>gaussian</type>
-          <!-- Noise is sampled independently per pixel on each frame.
-               That pixel's noise value is added to each of its color
-               channels, which at that point lie in the range [0,1]. -->
           <mean>0.0</mean>
           <stddev>0.007</stddev>
         </noise>
@@ -474,6 +471,7 @@
       </plugin>
     </sensor>
   </gazebo>
+-->
 
   <gazebo reference="bumblebee_mount_link">
     <sensor type="multicamera" name="stereo_camera">
@@ -532,7 +530,7 @@
       </sensor>
      </gazebo>
 
-  <gazebo reference="blackfly_mount_link_right">
+<!--  <gazebo reference="blackfly_mount_link_right">
     <sensor type="camera" name="blackfly_camera_right">
       <update_rate>20</update_rate>
       <camera name="head">
@@ -550,7 +548,7 @@
           <type>gaussian</type>
           <!-- Noise is sampled independently per pixel on each frame.
                That pixel's noise value is added to each of its color
-               channels, which at that point lie in the range [0,1]. -->
+               channels, which at that point lie in the range [0,1]. ->
           <mean>0.0</mean>
           <stddev>0.007</stddev>
         </noise>
@@ -571,5 +569,6 @@
       </plugin>
     </sensor>
   </gazebo>
+-->
 
 </robot>
