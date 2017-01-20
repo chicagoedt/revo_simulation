@@ -23,7 +23,7 @@
   </include>
 </group>
 -->
-  <include file="$(find scipio_2dnav)/launch/static_transforms.launch"/>
+  
   
   <include file="$(find scipio_2dnav)/launch/move_base.launch"/>
   
