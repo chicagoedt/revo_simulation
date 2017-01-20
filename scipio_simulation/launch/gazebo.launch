@@ -23,7 +23,11 @@
   </include>
 </group>
 -->
-  
+
+
+<!-- this is already included in robot_localization.launch, commented out to prevent launching of redundant nodes
+  <include file="$(find scipio_2dnav)/launch/static_transforms.launch"/>
+-->
   
   <include file="$(find scipio_2dnav)/launch/move_base.launch"/>
   
