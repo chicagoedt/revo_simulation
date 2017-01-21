@@ -10,7 +10,11 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>hector_gazebo_plugins</build_depend>
-  <build_depend>gazebo_ros_pkgs</build_depend>
+  <!-- package "scipio_simulation" should not depend on metapackage "gazebo_ros_pkgs" but on its packages instead
+  <build_depend>gazebo_ros_pkgs</build_depend> -->
+  <build_depend>gazebo_msgs</build_depend>
+  <build_depend>gazebo_plugins</build_depend>
+  <build_depend>gazebo_ros</build_depend>
   <run_depend>robot_localization</run_depend>
   <run_depend>hector_gazebo_plugins</run_depend>
   <run_depend>gazebo_ros_pkgs</run_depend>
