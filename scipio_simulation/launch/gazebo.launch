@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="gui" default="false" />
-  <arg name="headless" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
   <arg name="rviz" default="true" />
   <arg name="nav" default="true" />
 
